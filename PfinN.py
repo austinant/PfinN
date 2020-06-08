@@ -225,6 +225,13 @@ def partitions(n): #integer partitions of n, code borrowed from [2] above
 ################################################################################
 
 
+def ptype(fzn): #returns the partition type of a factorization
+    maxs = []
+    for a in fzn:
+        maxs.append(max(a))
+    return tuple(sorted(maxs,reverse=True))
+
+
 def facs_of_type(X,p): #returns all factorizations of X of p-type p
     F = set()
     atom_classes = []
