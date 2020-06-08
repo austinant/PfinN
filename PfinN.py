@@ -51,7 +51,7 @@ def is_subset(X,Y): #decides whether X is a subset of Y
 ### Functions for setwise sums #################################################
 ################################################################################
 
-'''
+
 def setsum(X,Y): #returns X+Y={x+y: (x,y) in (X,Y)}
     return set(x+y for x in X for y in Y)
     
@@ -75,6 +75,7 @@ def subsums(X): #returns set of subsums of a multiset or tuple X
     for x in X:
         S = setsum(S,{0,x})
     return S
+
 '''
 ### fast versions of these functions, using @njit decorator from numba
 
@@ -104,7 +105,7 @@ def subsums(X): #returns set of subsums of a multiset or tuple X
     for x in X:
         S = setsum(S,{0,x})
     return S
-
+'''
 
 ################################################################################
 #Functions for testing sumset decompositions involving a given factor ##########
