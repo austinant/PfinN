@@ -52,17 +52,20 @@ def is_subset(X,Y): #decides whether X is a subset of Y
 ################################################################################
 
 
-def setsum(X,Y): #returns X+Y={x+y: (x,y) in (X,Y)}
+def setwisesum(X,Y): #returns X+Y={x+y: (x,y) in (X,Y)}
     return set(x+y for x in X for y in Y)
-    
-def msum(*listofsets): #n-ary version of setsum
+
+def setsum(*listofsets): #n-ary version of setsum
     S = listofsets[0]
     if len(listofsets) == 1:
         return S
     else:
         for i in range(1,len(listofsets)):
-            S = setsum(S,listofsets[i])
+            S = setwisesum(S,listofsets[i])
         return S
+
+#def msum(*listofsets): #n-ary version of setsum
+#    return setsum(listofsets)
 
 def translate(X,c): #translates X by c
     return set(x+c for x in X)
@@ -231,7 +234,7 @@ def facs_of_type(X,p): #returns all factorizations of X of p-type p
         f.close()
     atom_tuples = it.product(*atom_classes)
     for aa in atom_tuples:
-        if msum(*aa) == X:
+        if setsum(*aa) == X:
             F.add(aa)
     return set(tuple(sorted(f,reverse=True)) for f in F)
 
